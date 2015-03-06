@@ -7,7 +7,7 @@
 		<version>9</version>
 	</parent>
 	<groupId>Tps</groupId>
-	<artifactId>Tp1</artifactId>
+	<artifactId>Tp2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<build>
 		<plugins>
