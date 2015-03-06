@@ -66,7 +66,28 @@ public class DatesTest {
 
     @Test
     public void testDateSuivante() {
-        assertArrayEquals(new int[] { 1, 2, 2000 }, Dates.dateSuivante(new int[] { 31, 1, 2000 }));
+        assertArrayEquals(new int[] { 1, 1, 2000 }, Dates.dateSuivante(new int[] { 31, 12, 1999 }));
+    }
+
+    @Test
+    public void testnbJour() {
+        assertEquals(28, Dates.nombreDeJoursDansMois(2, 2013));
+    }
+
+    @Test
+    public void testnbJour3() {
+        assertEquals(29, Dates.nombreDeJoursDansMois(2, 2016));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testDateSuivante2() {
+        Dates.dateSuivante(new int[] { 31, 13, 2015 });
+    }
+
+    @Test
+    public void testDateSuivante3() {
+        final int[] datest = Dates.dateSuivante(new int[] { 31, 12, 2015 });
+        assertEquals("1 janvier 2016", Dates.commeString(datest));
     }
 
 }
