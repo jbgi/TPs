@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public final class Jeux {
+public final class Jeu {
 
     private final List<Carte> pioche;
 
     private final List<Joueur> joueurs;
 
-    private Jeux(final List<Carte> pioche, final List<Joueur> joueurs) {
+    private Jeu(final List<Carte> pioche, final List<Joueur> joueurs) {
         this.pioche = pioche;
         this.joueurs = joueurs;
     }
@@ -35,15 +35,15 @@ public final class Jeux {
     @Override
     @Deprecated
     public boolean equals(final Object obj) {
-        return obj instanceof Jeux ? equals((Jeux) obj) : false;
+        return obj instanceof Jeu ? equals((Jeu) obj) : false;
     }
 
-    public boolean equals(final Jeux autreJeux) {
+    public boolean equals(final Jeu autreJeux) {
         return this.pioche.equals(autreJeux.pioche) && this.joueurs.equals(autreJeux.joueurs);
     }
 
-    public static Jeux creerJeux(final List<Carte> pioche, final List<Joueur> joueurs) {
-        return new Jeux(Collections.unmodifiableList(new ArrayList<>(pioche)), Collections.unmodifiableList(new ArrayList<>(
+    public static Jeu creerJeux(final List<Carte> pioche, final List<Joueur> joueurs) {
+        return new Jeu(Collections.unmodifiableList(new ArrayList<>(pioche)), Collections.unmodifiableList(new ArrayList<>(
                 joueurs)));
     }
 
