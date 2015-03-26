@@ -1,18 +1,13 @@
 package common.data;
 
+import java.util.function.Function;
+import java.util.function.Supplier;
+
 public abstract class Option<A> {
 
     // Option <A> = QuelqueChose <A> | Rien
 
-    public interface Case<A, R> {
-
-        R something(A a);
-
-        R nothing();
-
-    }
-
-    abstract <R> R match(Case<A, R> cases);
+    abstract <R> R match(Function<A, R> something, Supplier<R> nothing);
 
     public static void main(final String[] args) {
         final Option<Integer> o1 = something(1);
@@ -24,8 +19,8 @@ public abstract class Option<A> {
     public static <A> Option<A> something(final A a) {
         return new Option<A>() {
             @Override
-            <R> R match(final Case<A, R> cases) {
-                return cases.something(a);
+            <R> R match(final Function<A, R> something, final Supplier<R> nothing) {
+                return something.apply(a);
             }
         };
     }
@@ -33,24 +28,16 @@ public abstract class Option<A> {
     public static <A> Option<A> nothing() {
         return new Option<A>() {
             @Override
-            <R> R match(final Case<A, R> cases) {
-                return cases.nothing();
+            <R> R match(final Function<A, R> something, final Supplier<R> nothing) {
+                return nothing.get();
             }
         };
     }
 
     static String afficher(final Option<Integer> os) {
-        return os.match(new Case<Integer, String>() {
-            @Override
-            public String something(final Integer a) {
-                return "Something(" + a + ")";
-            }
-
-            @Override
-            public String nothing() {
-                return "Nothing()";
-            }
-        });
+        return os.match(
+                (Integer i) -> "Something(" + i + ")",
+                () -> "Nothing()");
 
     }
 }
