@@ -53,7 +53,7 @@ public class Coureur {
 
     @Override
     public String toString() {
-        return ("   No." + numDossard + ": " + nom + ", status: " + stat);
+        return ("   No." + numDossard + ":" + nom + ", status: " + stat);
     }
 
     public void affiche() {
