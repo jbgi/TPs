@@ -1,7 +1,5 @@
 package coursamanager.domain.model.event;
 
-import java.time.Instant;
-
 import com.github.sviperll.adt4j.GenerateValueClassForVisitor;
 import com.github.sviperll.meta.Visitor;
 
@@ -23,15 +21,5 @@ public interface CourseEventCases<R> {
     R runnerEnlisted(int numeroDossard, RunnerDetails runnerDetails);
 
     R runnerUnlisted(int numeroDossard);
-
-    R courseStarted(Instant instantDebutCourse);
-
-    R runnerDisqualified(int numeroDosard, String reason);
-
-    R runnerArrived(int numeroDosard, Instant instantArrivee);
-
-    R runnerHasGivenUp(int numeroDosard);
-
-    R coursedFinished(Instant instantFin);
 
 }

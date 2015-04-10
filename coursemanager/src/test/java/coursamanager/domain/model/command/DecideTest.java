@@ -20,7 +20,7 @@ public class DecideTest {
     public void createCourse() {
         // given
         final CourseCommand command = CourseCommand.createCourse("Ma course");
-        final CourseState etatCourse = courseState(Status.New, Collections.emptySet());
+        final CourseState etatCourse = courseState(Status.New, Collections.emptySet(), Collections.emptyMap());
         final Instant now = Instant.now();
 
         // when
@@ -35,7 +35,7 @@ public class DecideTest {
     public void createCourse_Already_Created() {
         // given
         final CourseCommand command = CourseCommand.createCourse("Ma course");
-        final CourseState etatCourse = courseState(Status.InProgress, Collections.emptySet());
+        final CourseState etatCourse = courseState(Status.InProgress, Collections.emptySet(), Collections.emptyMap());
         final Instant now = Instant.now();
 
         // when
@@ -50,7 +50,7 @@ public class DecideTest {
     public void createCourse_Name_too_short() {
         // given
         final CourseCommand command = CourseCommand.createCourse("Ma");
-        final CourseState etatCourse = courseState(Status.New, Collections.emptySet());
+        final CourseState etatCourse = courseState(Status.New, Collections.emptySet(), Collections.emptyMap());
         final Instant now = Instant.now();
 
         // when
@@ -65,7 +65,7 @@ public class DecideTest {
     public void renameCourse() {
         // given
         final CourseCommand command = CourseCommand.renameCourse("Ma Course 2");
-        final CourseState etatCourse = courseState(Status.Preparation, Collections.emptySet());
+        final CourseState etatCourse = courseState(Status.Preparation, Collections.emptySet(), Collections.emptyMap());
         final Instant now = Instant.now();
 
         // when
