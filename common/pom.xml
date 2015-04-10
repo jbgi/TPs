@@ -5,10 +5,8 @@
 		<groupId>com.gitlab.nfa055-ra-2015.tps</groupId>
 		<artifactId>maven-parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>../maven-parent</relativePath>
 	</parent>
 	<artifactId>common</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
