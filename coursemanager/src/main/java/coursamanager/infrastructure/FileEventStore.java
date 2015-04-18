@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ConcurrentModificationException;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.UUID;
 
 import coursamanager.domain.model.event.CourseEvent;
@@ -45,6 +46,11 @@ public class FileEventStore implements EventStore {
             throws IOException {
         // TODO récupérer depuis le disque tous les évênements numéroté >= eventOffset (si eventOffset = 0, renvoyé tous les
         // évênements)
+        throw new UnsupportedOperationException("");
+    }
+
+    @Override
+    public List<Entry<UUID, CourseEvent>> readAllEventsFrom(final int eventOffset) {
         throw new UnsupportedOperationException("");
     }
 

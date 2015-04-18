@@ -2,6 +2,8 @@ package coursamanager.domain.model.command.apply;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.stream.Stream;
 
 import coursamanager.domain.model.CategoryDefinition;
 import coursamanager.domain.model.RunnerDetails;
@@ -62,6 +64,26 @@ public class Apply implements CourseEventCases<CourseState> {
 
     public static CourseState initialState() {
         return CourseState.courseState(Status.New, new HashSet<>(), new HashMap<>());
+    }
+
+    public static CourseState replayEvents(final Iterator<CourseEvent> eventIterator) {
+        // TODO: utiliser replayEventsFrom(CourseState state, Iterator<CourseEvent> eventIterator)
+        throw new UnsupportedOperationException("No implemented yet");
+    }
+
+    public static CourseState replayEventsFrom(final CourseState state, final Iterator<CourseEvent> eventIterator) {
+        // TODO
+        throw new UnsupportedOperationException("No implemented yet");
+    }
+
+    public static CourseState replayEventStream(final Stream<CourseEvent> eventIterator) {
+        // TODO: utiliser replayEventStreamFrom(CourseState state, Iterator<CourseEvent> eventIterator)
+        throw new UnsupportedOperationException("No implemented yet");
+    }
+
+    public static CourseState replayEventStreamFrom(final CourseState state, final Stream<CourseEvent> eventIterator) {
+        // TODO
+        throw new UnsupportedOperationException("No implemented yet");
     }
 
 }
