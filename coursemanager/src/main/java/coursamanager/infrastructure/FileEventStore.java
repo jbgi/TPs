@@ -2,6 +2,7 @@ package coursamanager.infrastructure;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ConcurrentModificationException;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,7 +22,8 @@ public class FileEventStore implements EventStore {
     }
 
     @Override
-    public void recordEvents(final UUID courseId, final List<CourseEvent> events) throws IOException {
+    public void recordEvents(final UUID courseId, final List<CourseEvent> events, final int eventOffset) throws IOException,
+            ConcurrentModificationException {
         final File courseRepo = new File(rootRepo, courseId.toString());
         if (!courseRepo.exists()) {
             if (!courseRepo.mkdirs()) {
@@ -31,19 +33,18 @@ public class FileEventStore implements EventStore {
 
         // à chaque courseId on associe un sous-répertoire de rootRepo
         // à chaque CourseEvent on associe un fichier numéroté par ordre d'arrivé, <num>-event.txt
-        // Il faut parcourir le répertoire pour trouver le numéro du dernier évênement enregistré et enregister les suivant à
-        // partir de ce numéro + 1.
-        final int lastEventNumber = -1;
-        for (final File file : courseRepo.listFiles()) {
-            // TODO
-        }
+        // Il faut vérifier que l'event numéro 'eventOffset' n'exsite pas, sinon lever une ConcurrentModificationException.
+        // Ensuite on peut enregister les évênements à partir de ce numéro.
+
         // TODO
 
     }
 
     @Override
-    public List<CourseEvent> readEventsFrom(final UUID courseId, final int firstEventToRead) throws IOException {
-        // TODO Auto-generated method stub
+    public List<CourseEvent> readEventsFrom(final UUID courseId, final int eventOffset)
+            throws IOException {
+        // TODO récupérer depuis le disque tous les évênements numéroté >= eventOffset (si eventOffset = 0, renvoyé tous les
+        // évênements)
         throw new UnsupportedOperationException("");
     }
 
